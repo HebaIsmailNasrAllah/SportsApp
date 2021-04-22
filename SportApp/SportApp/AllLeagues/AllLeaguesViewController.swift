@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    private let allLeguesPresenter = AllLeguesPresenter()
+    var leguesToDisplay = [Countrys]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        allLeguesPresenter.attachView(view: self)
+        allLeguesPresenter.getAllLegues()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        allLeguesPresenter.getAllLegues()
+        self.tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -35,7 +43,8 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        print(leguesToDisplay.count)
+        return leguesToDisplay.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,16 +56,39 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
     //        cell.leagueImg.layer.cornerRadius = cell.leagueImg.frame.size.width/2
     //
             let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-            cell.leagueName.text = "Test"
-            cell.leagueDetail.text = "123"
+        cell.leagueName.text = leguesToDisplay[indexPath.row].strLeague!
+        print(leguesToDisplay[indexPath.row].strLeague!)
+            cell.leagueDetail.text = ""
             cell.mainImg.image = UIImage(named: "imgPlaceHolder")
+        let str = leguesToDisplay[indexPath.row].strBadge!
+        cell.mainImg!.sd_setImage(with: URL(string:str), placeholderImage: UIImage(named: "imgPlaceHolder"))
+//        cell.mainImg.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "imgPlaceHolder))
             cell.mainImg.layer.cornerRadius = cell.mainImg.frame.size.width/2
+//        let url : String = leguesToDisplay[indexPath.row].strYoutube!
+        /*cell.youtubeIcon.addTarget(self, action: #selector(self.goToYouTube(url: url)), for: .touchUpInside)*/
+       //---------------------------
+        cell.youtubeStr = leguesToDisplay[indexPath.row].strYoutube!
+//        cell.youtubeIcon.addTarget(self, action: #selector(cell.youtubBtn(_:)), for: .touchUpInside)
             return cell
            
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("\nYou Clicked a row!")
+            if NetworkMonitor.shared.isConnected {
+                let vc = storyboard?.instantiateViewController(identifier: "leagueDetails") as? leagueDetailsViewController
+                present(vc!, animated: true, completion: nil)
+            }else{
+                let alert : UIAlertController = UIAlertController(title: "Alert", message: "You Are Offline! Please Turn On The Internet", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    print("ok")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            //
+//            let url : String =  leguesToDisplay[indexPath.row].strYoutube! //leguesToDisplay[indexPath.row].strYoutube!
+            
+            
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,5 +96,26 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
         }
     
     
+    @objc func goToYouTube(url : String){
+//        let url : String = "www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w"
+        if url != "" {
+            UIApplication.shared.open(NSURL(string: "https://\(url)")! as URL, options: [:], completionHandler: nil)
+        }else{
+            let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("ok")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
 
+}
+extension AllLeaguesViewController : AllLeguesProtocol{
+    func setLegues(Legues: [Countrys]) {
+        self.leguesToDisplay = Legues
+        self.tableView.reloadData()
+    }
+    
+    
 }

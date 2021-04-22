@@ -10,6 +10,8 @@ import UIKit
 
 class TableViewCell1: UITableViewCell {
 
+    var youtubeStr:String = ""
+
     @IBOutlet weak var mainImg: UIImageView!
     
     @IBOutlet weak var leagueName: UILabel!
@@ -19,4 +21,6 @@ class TableViewCell1: UITableViewCell {
     @IBOutlet weak var youtubeIcon: UIButton!
     
     
+    @IBAction func goToTrailer(_ sender: UIButton) {
+    }
 }

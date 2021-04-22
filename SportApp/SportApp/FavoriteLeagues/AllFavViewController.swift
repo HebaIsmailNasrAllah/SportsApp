@@ -59,6 +59,9 @@ class AllFavViewController: UIViewController , UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\nYou Clicked a row!")
+        let vc = storyboard?.instantiateViewController(identifier: "AllLeagues") as? AllLeaguesViewController
+        present(vc!, animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

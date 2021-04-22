@@ -37,6 +37,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-dC-gJi">
                         <rect key="frame" x="302" y="46" width="60" height="53.5"/>
                         <state key="normal" title="Button" image="youTubeIcon"/>
+                        <connections>
+                            <action selector="goToTrailer:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="npv-Dg-PXj"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>

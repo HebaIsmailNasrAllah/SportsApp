@@ -10,6 +10,18 @@ import UIKit
 
 class TeamDetailsViewController: UIViewController {
 
+    @IBOutlet weak var teamImg: UIImageView!
+    
+    @IBOutlet weak var teamName: UILabel!
+    
+    @IBOutlet weak var sportName: UILabel!
+    
+    @IBOutlet weak var year: UILabel!
+    
+    @IBOutlet weak var staduimName: UILabel!
+    
+    @IBOutlet weak var countryName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
