@@ -14,6 +14,7 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     private let allLeguesPresenter = AllLeguesPresenter()
     var leguesToDisplay = [Countrys]()
+    public var strSport = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,10 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
         tableView.dataSource = self
         // Do any additional setup after loading the view.
         allLeguesPresenter.attachView(view: self)
-        allLeguesPresenter.getAllLegues()
+        allLeguesPresenter.getAllLegues(url:"https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?s=\(strSport)")
     }
     override func viewWillAppear(_ animated: Bool) {
-        allLeguesPresenter.getAllLegues()
+        allLeguesPresenter.getAllLegues(url: "https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?s=\(strSport)")
         self.tableView.reloadData()
     }
 
@@ -60,23 +61,51 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
         print(leguesToDisplay[indexPath.row].strLeague!)
             cell.leagueDetail.text = ""
             cell.mainImg.image = UIImage(named: "imgPlaceHolder")
-        let str = leguesToDisplay[indexPath.row].strBadge!
+        let str = leguesToDisplay[indexPath.row].strBadge ?? "https://www.thesportsdb.com/images/sports/fighting.jpg"
         cell.mainImg!.sd_setImage(with: URL(string:str), placeholderImage: UIImage(named: "imgPlaceHolder"))
 //        cell.mainImg.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "imgPlaceHolder))
             cell.mainImg.layer.cornerRadius = cell.mainImg.frame.size.width/2
-//        let url : String = leguesToDisplay[indexPath.row].strYoutube!
-        /*cell.youtubeIcon.addTarget(self, action: #selector(self.goToYouTube(url: url)), for: .touchUpInside)*/
+
        //---------------------------
-        cell.youtubeStr = leguesToDisplay[indexPath.row].strYoutube!
-//        cell.youtubeIcon.addTarget(self, action: #selector(cell.youtubBtn(_:)), for: .touchUpInside)
+        cell.youtubeStr = leguesToDisplay[indexPath.row].strYoutube ?? ""
+        NotificationCenter.default.addObserver(self, selector: #selector(displayNoLink), name: NSNotification.Name(rawValue: "displayNoLink"), object: nil)
             return cell
            
         }
         
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            print("\nYou Clicked a row!")
+//            if NetworkMonitor.shared.isConnected {
+//                let vc = storyboard?.instantiateViewController(identifier: "leagueDetails") as? leagueDetailsViewController
+//                present(vc!, animated: true, completion: nil)
+//            }else{
+//                let alert : UIAlertController = UIAlertController(title: "Alert", message: "You Are Offline! Please Turn On The Internet", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+//                    print("ok")
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//
+//        }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("\nYou Clicked a row!")
             if NetworkMonitor.shared.isConnected {
-                let vc = storyboard?.instantiateViewController(identifier: "leagueDetails") as? leagueDetailsViewController
+                let vc = storyboard?.instantiateViewController(identifier: "LeagueDetails") as? leagueDetailsViewController
+                
+                //collecting Data
+                let movingData = MyStoredFavorites()
+                movingData.name = leguesToDisplay[indexPath.row].strLeague ?? " "
+                movingData.leagueID =  leguesToDisplay[indexPath.row].idLeague ?? ""
+                movingData.country =  leguesToDisplay[indexPath.row].strCountry ?? ""
+                movingData.image =  leguesToDisplay[indexPath.row].strBadge ?? ""
+                movingData.sport =  leguesToDisplay[indexPath.row].strSport ?? ""
+                movingData.youTubeLink =  leguesToDisplay[indexPath.row].strYoutube ?? ""
+                print("Name : \(movingData.name) , leagueID: \(movingData.leagueID)")
+                //print()
+                //sendingData
+                vc!.myStoredData = movingData
+    
                 present(vc!, animated: true, completion: nil)
             }else{
                 let alert : UIAlertController = UIAlertController(title: "Alert", message: "You Are Offline! Please Turn On The Internet", preferredStyle: .alert)
@@ -84,30 +113,19 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
                     print("ok")
                 }))
                 self.present(alert, animated: true, completion: nil)
-            }
-            //
-//            let url : String =  leguesToDisplay[indexPath.row].strYoutube! //leguesToDisplay[indexPath.row].strYoutube!
-            
-            
-        }
+        }}
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 120
         }
     
     
-    @objc func goToYouTube(url : String){
-//        let url : String = "www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w"
-        if url != "" {
-            UIApplication.shared.open(NSURL(string: "https://\(url)")! as URL, options: [:], completionHandler: nil)
-        }else{
-            let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                print("ok")
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+    @objc func displayNoLink(){
+                    let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        print("ok")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
     }
 
 }

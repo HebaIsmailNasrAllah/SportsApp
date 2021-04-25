@@ -10,11 +10,18 @@ import UIKit
 
 class ResultCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var teamsName: UILabel!
+    @IBOutlet weak var teamsHome: UILabel!
+    
+    @IBOutlet weak var teamAway: UILabel!
     
     @IBOutlet weak var teamsResult: UILabel!
     
     @IBOutlet weak var dateAndTime: UILabel!
+    
+    @IBOutlet weak var teamAwayImg: UIImageView!
+    
+    
+    @IBOutlet weak var teamHomeImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

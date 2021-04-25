@@ -9,27 +9,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultCollectionViewCell" id="gTV-IL-0wX" customClass="ResultCollectionViewCell" customModule="TryFunctionality" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="371" height="90"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultCollectionViewCell" id="gTV-IL-0wX" customClass="ResultCollectionViewCell" customModule="SportApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="198"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="371" height="90"/>
+                <rect key="frame" x="0.0" y="0.0" width="473" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5i-dj-34o">
-                        <rect key="frame" x="16" y="62" width="339" height="12"/>
+                        <rect key="frame" x="142" y="169.5" width="181" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHf-gf-oPf">
+                        <rect key="frame" x="0.0" y="126.5" width="142" height="71.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJS-U9-OOL">
+                        <rect key="frame" x="331" y="118.5" width="142" height="79.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xAT-SN-NT2">
+                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="118.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xAT-SN-NT2" secondAttribute="height" multiplier="1:1" id="ziy-gJ-UFS"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7jN-cw-1CB">
+                        <rect key="frame" x="355" y="0.0" width="118" height="118.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="7jN-cw-1CB" secondAttribute="height" multiplier="1:1" id="7F5-wo-GQX"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAg-3i-hab">
-                        <rect key="frame" x="16" y="38" width="339" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHf-gf-oPf">
-                        <rect key="frame" x="16" y="16" width="339" height="12"/>
+                        <rect key="frame" x="126.5" y="93.5" width="220.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,27 +55,38 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="G5i-dj-34o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="1pN-rK-NPF"/>
-                <constraint firstItem="EAg-3i-hab" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.26" id="59l-BQ-XUD"/>
-                <constraint firstItem="iHf-gf-oPf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="8Mh-b5-9Ij"/>
-                <constraint firstItem="G5i-dj-34o" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.26" id="EJ3-jW-xhB"/>
-                <constraint firstItem="EAg-3i-hab" firstAttribute="top" secondItem="iHf-gf-oPf" secondAttribute="bottom" constant="10" id="EN3-0r-Uxh"/>
-                <constraint firstItem="iHf-gf-oPf" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="0.26" id="L1z-ed-kWD"/>
-                <constraint firstItem="EAg-3i-hab" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="TXn-9Y-s9B"/>
-                <constraint firstAttribute="trailing" secondItem="iHf-gf-oPf" secondAttribute="trailing" constant="16" id="XMf-Wl-PI5"/>
-                <constraint firstAttribute="trailing" secondItem="EAg-3i-hab" secondAttribute="trailing" constant="16" id="aNH-y7-iO7"/>
-                <constraint firstAttribute="bottom" secondItem="G5i-dj-34o" secondAttribute="bottom" constant="16" id="lzA-H4-LR2"/>
-                <constraint firstAttribute="trailing" secondItem="G5i-dj-34o" secondAttribute="trailing" constant="16" id="nn8-ux-0RE"/>
-                <constraint firstItem="iHf-gf-oPf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="y2a-xK-fcn"/>
+                <constraint firstItem="iHf-gf-oPf" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.3" id="3LA-aN-OHU"/>
+                <constraint firstItem="xAT-SN-NT2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="72X-5a-hrP"/>
+                <constraint firstAttribute="bottom" secondItem="yJS-U9-OOL" secondAttribute="bottom" id="B4N-pf-O1p"/>
+                <constraint firstItem="7jN-cw-1CB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DaP-1j-rEq"/>
+                <constraint firstItem="yJS-U9-OOL" firstAttribute="top" secondItem="7jN-cw-1CB" secondAttribute="bottom" id="EDP-eg-WFv"/>
+                <constraint firstItem="G5i-dj-34o" firstAttribute="leading" secondItem="iHf-gf-oPf" secondAttribute="trailing" id="Ews-Wa-Sff"/>
+                <constraint firstItem="yJS-U9-OOL" firstAttribute="leading" secondItem="G5i-dj-34o" secondAttribute="trailing" constant="8" symbolic="YES" id="F2n-DI-pon"/>
+                <constraint firstItem="yJS-U9-OOL" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.3" id="HTH-w1-GPN"/>
+                <constraint firstAttribute="bottom" secondItem="iHf-gf-oPf" secondAttribute="bottom" id="QP9-Jy-4Wv"/>
+                <constraint firstItem="iHf-gf-oPf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vvg-gp-CEk"/>
+                <constraint firstItem="xAT-SN-NT2" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.25" id="Wx6-d5-223"/>
+                <constraint firstItem="EAg-3i-hab" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="cjX-8f-sHC"/>
+                <constraint firstItem="7jN-cw-1CB" firstAttribute="leading" secondItem="EAg-3i-hab" secondAttribute="trailing" constant="8" symbolic="YES" id="eek-EY-IoY"/>
+                <constraint firstItem="iHf-gf-oPf" firstAttribute="top" secondItem="xAT-SN-NT2" secondAttribute="bottom" constant="8" symbolic="YES" id="hlS-kn-gSY"/>
+                <constraint firstAttribute="trailing" secondItem="7jN-cw-1CB" secondAttribute="trailing" id="i1D-RC-Gag"/>
+                <constraint firstAttribute="trailing" secondItem="yJS-U9-OOL" secondAttribute="trailing" id="qwm-l4-c3j"/>
+                <constraint firstItem="EAg-3i-hab" firstAttribute="leading" secondItem="xAT-SN-NT2" secondAttribute="trailing" constant="8" symbolic="YES" id="sza-zj-gdc"/>
+                <constraint firstAttribute="bottom" secondItem="G5i-dj-34o" secondAttribute="bottom" constant="8" id="vzd-U4-Pei"/>
+                <constraint firstItem="xAT-SN-NT2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wKf-g8-gA0"/>
+                <constraint firstItem="7jN-cw-1CB" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" multiplier="0.25" id="wNZ-6A-bdi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="371" height="90"/>
+            <size key="customSize" width="473" height="198"/>
             <connections>
-                <outlet property="dateAndTime" destination="G5i-dj-34o" id="FNz-95-S9G"/>
-                <outlet property="teamsName" destination="iHf-gf-oPf" id="eWD-Z2-DyW"/>
-                <outlet property="teamsResult" destination="EAg-3i-hab" id="kEo-r9-A0m"/>
+                <outlet property="dateAndTime" destination="G5i-dj-34o" id="gLJ-Xa-KdR"/>
+                <outlet property="teamAway" destination="yJS-U9-OOL" id="u7k-Rd-deX"/>
+                <outlet property="teamAwayImg" destination="7jN-cw-1CB" id="2BS-Ne-2l3"/>
+                <outlet property="teamHomeImg" destination="xAT-SN-NT2" id="aff-ff-7RL"/>
+                <outlet property="teamsHome" destination="iHf-gf-oPf" id="jzb-ji-mQS"/>
+                <outlet property="teamsResult" destination="EAg-3i-hab" id="WyX-Vm-BH1"/>
             </connections>
-            <point key="canvasLocation" x="225.36231884057972" y="79.017857142857139"/>
+            <point key="canvasLocation" x="180.43478260869566" y="95.758928571428569"/>
         </collectionViewCell>
     </objects>
 </document>

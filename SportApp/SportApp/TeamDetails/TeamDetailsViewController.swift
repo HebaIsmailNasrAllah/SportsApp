@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TeamDetailsViewController: UIViewController {
 
@@ -22,9 +23,18 @@ class TeamDetailsViewController: UIViewController {
     
     @IBOutlet weak var countryName: UILabel!
     
+    var selectedTeam = Teams()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        teamImg.sd_setImage(with: URL(string: selectedTeam.strTeamBadge ?? ""), placeholderImage: UIImage(named: "imgPlaceHolder"))
+        
+        teamName.text = selectedTeam.strTeam
+        sportName.text = selectedTeam.strSport
+        year.text = selectedTeam.intFormedYear
+        staduimName.text = selectedTeam.strStadium
+        countryName.text = selectedTeam.strCountry
         // Do any additional setup after loading the view.
     }
     

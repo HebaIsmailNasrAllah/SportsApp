@@ -17,21 +17,9 @@ class AllLeguesPresenter{
     func detachView() {
         allLegeusProtocol = nil
     }
-    func getAllLegues(){
-//        self.cartView?.startLoading()
-//        cartService.getCarts { [weak self] carts in
-//            self?.cartView?.finishLoading()
-//            if carts.count == 0 {
-//                self?.cartView?.setEmptyCarts()
-//            } else {
-//                let mappedCarts = carts.map({ data in
-//                    return CartViewData(name: data.name , price: data.price)
-//                })
-//                self?.cartView?.setCarts(carts: mappedCarts)
-//            }
-//        }
-       
-            WebService.instance.getData(url: "https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?s=Soccer") { (legueResponse : LeguesResponse?, error) in
+    
+    func getAllLegues(url : String){
+            WebService.instance.getData(url: url) { (legueResponse : LeguesResponse?, error) in
                 if let error = error{
                     print(error)
                 }else{
@@ -39,8 +27,8 @@ class AllLeguesPresenter{
                         return
                     }
                     
-                    print(legues.countrys!.count)
-                    self.allLegeusProtocol!.setLegues(Legues: legues.countrys!)
+                    print(legues.countrys?.count ?? 0)
+                    self.allLegeusProtocol!.setLegues(Legues: legues.countrys ?? [] )
                     
                 }
                 

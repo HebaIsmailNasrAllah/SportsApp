@@ -22,5 +22,15 @@ class TableViewCell1: UITableViewCell {
     
     
     @IBAction func goToTrailer(_ sender: UIButton) {
+        if youtubeStr != "" {
+            UIApplication.shared.open(NSURL(string: "https://\(youtubeStr)")! as URL, options: [:], completionHandler: nil)
+        }else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "displayNoLink"), object: youtubeStr)
+//            let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+//                print("ok")
+//            }))
+          //  self.present(alert, animated: true, completion: nil)
+        }
     }
 }

@@ -13,69 +13,69 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Teams : Codable {
-	let idTeam : String?
-	let idSoccerXML : String?
-	let idAPIfootball : String?
-	let intLoved : String?
-	let strTeam : String?
-	let strTeamShort : String?
-	let strAlternate : String?
-	let intFormedYear : String?
-	let strSport : String?
-	let strLeague : String?
-	let idLeague : String?
-	let strLeague2 : String?
-	let idLeague2 : String?
-	let strLeague3 : String?
-	let idLeague3 : String?
-	let strLeague4 : String?
-	let idLeague4 : String?
-	let strLeague5 : String?
-	let idLeague5 : String?
-	let strLeague6 : String?
-	let idLeague6 : String?
-	let strLeague7 : String?
-	let idLeague7 : String?
-	let strDivision : String?
-	let strManager : String?
-	let strStadium : String?
-	let strKeywords : String?
-	let strRSS : String?
-	let strStadiumThumb : String?
-	let strStadiumDescription : String?
-	let strStadiumLocation : String?
-	let intStadiumCapacity : String?
-	let strWebsite : String?
-	let strFacebook : String?
-	let strTwitter : String?
-	let strInstagram : String?
-	let strDescriptionEN : String?
-	let strDescriptionDE : String?
-	let strDescriptionFR : String?
-	let strDescriptionCN : String?
-	let strDescriptionIT : String?
-	let strDescriptionJP : String?
-	let strDescriptionRU : String?
-	let strDescriptionES : String?
-	let strDescriptionPT : String?
-	let strDescriptionSE : String?
-	let strDescriptionNL : String?
-	let strDescriptionHU : String?
-	let strDescriptionNO : String?
-	let strDescriptionIL : String?
-	let strDescriptionPL : String?
-	let strGender : String?
-	let strCountry : String?
-	let strTeamBadge : String?
-	let strTeamJersey : String?
-	let strTeamLogo : String?
-	let strTeamFanart1 : String?
-	let strTeamFanart2 : String?
-	let strTeamFanart3 : String?
-	let strTeamFanart4 : String?
-	let strTeamBanner : String?
-	let strYoutube : String?
-	let strLocked : String?
+	var idTeam : String?
+	var idSoccerXML : String?
+	var idAPIfootball : String?
+	var intLoved : String?
+	var strTeam : String?
+	var strTeamShort : String?
+	var strAlternate : String?
+	var intFormedYear : String?
+	var strSport : String?
+	var strLeague : String?
+	var idLeague : String?
+	var strLeague2 : String?
+	var idLeague2 : String?
+	var strLeague3 : String?
+	var idLeague3 : String?
+	var strLeague4 : String?
+	var idLeague4 : String?
+	var strLeague5 : String?
+	var idLeague5 : String?
+	var strLeague6 : String?
+	var idLeague6 : String?
+	var strLeague7 : String?
+	var idLeague7 : String?
+	var strDivision : String?
+	var strManager : String?
+	var strStadium : String?
+	var strKeywords : String?
+	var strRSS : String?
+	var strStadiumThumb : String?
+	var strStadiumDescription : String?
+	var strStadiumLocation : String?
+    var intStadiumCapacity : String?
+	var strWebsite : String?
+	var strFacebook : String?
+	var strTwitter : String?
+	var strInstagram : String?
+	var strDescriptionEN : String?
+	var strDescriptionDE : String?
+	var strDescriptionFR : String?
+	var strDescriptionCN : String?
+	var strDescriptionIT : String?
+	var strDescriptionJP : String?
+	var strDescriptionRU : String?
+	var strDescriptionES : String?
+	var strDescriptionPT : String?
+	var strDescriptionSE : String?
+	var strDescriptionNL : String?
+	var strDescriptionHU : String?
+	var strDescriptionNO : String?
+	var strDescriptionIL : String?
+	var strDescriptionPL : String?
+	var strGender : String?
+	var strCountry : String?
+    var strTeamBadge : String?
+	var strTeamJersey : String?
+	var strTeamLogo : String?
+	var strTeamFanart1 : String?
+	var strTeamFanart2 : String?
+	var strTeamFanart3 : String?
+	var strTeamFanart4 : String?
+	var strTeamBanner : String?
+	var strYoutube : String?
+	var strLocked : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -83,11 +83,11 @@ struct Teams : Codable {
 		case idSoccerXML = "idSoccerXML"
 		case idAPIfootball = "idAPIfootball"
 		case intLoved = "intLoved"
-		case strTeam = "strTeam"
+		case strTeam = "strTeam" //
 		case strTeamShort = "strTeamShort"
 		case strAlternate = "strAlternate"
-		case intFormedYear = "intFormedYear"
-		case strSport = "strSport"
+		case intFormedYear = "intFormedYear" //
+		case strSport = "strSport" //
 		case strLeague = "strLeague"
 		case idLeague = "idLeague"
 		case strLeague2 = "strLeague2"
@@ -104,7 +104,7 @@ struct Teams : Codable {
 		case idLeague7 = "idLeague7"
 		case strDivision = "strDivision"
 		case strManager = "strManager"
-		case strStadium = "strStadium"
+		case strStadium = "strStadium" //
 		case strKeywords = "strKeywords"
 		case strRSS = "strRSS"
 		case strStadiumThumb = "strStadiumThumb"
@@ -131,8 +131,8 @@ struct Teams : Codable {
 		case strDescriptionIL = "strDescriptionIL"
 		case strDescriptionPL = "strDescriptionPL"
 		case strGender = "strGender"
-		case strCountry = "strCountry"
-		case strTeamBadge = "strTeamBadge"
+		case strCountry = "strCountry" //
+		case strTeamBadge = "strTeamBadge"  //
 		case strTeamJersey = "strTeamJersey"
 		case strTeamLogo = "strTeamLogo"
 		case strTeamFanart1 = "strTeamFanart1"
@@ -210,5 +210,22 @@ struct Teams : Codable {
 		strYoutube = try values.decodeIfPresent(String.self, forKey: .strYoutube)
 		strLocked = try values.decodeIfPresent(String.self, forKey: .strLocked)
 	}
+    
+    init(strTeam: String? = nil,
+         intFormedYear : String? = nil,
+         strSport : String? = nil,
+         strStadium :String? = nil,
+         strCountry: String? = nil,
+         strTeamBadge : String? = nil) {
+        self.strTeam = strTeam
+        self.intFormedYear = intFormedYear
+        self.strSport = strSport
+        self.strStadium = strStadium
+        self.strCountry = strCountry
+        self.strTeamBadge = strTeamBadge
+    }
+    
+    init () {}
+    
 
 }
