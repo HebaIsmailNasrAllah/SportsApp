@@ -10,5 +10,5 @@ import Foundation
 
 protocol FavoriteProtocol: NSObjectProtocol {
     func setAllFavorite(allfav: [MyStoredFavorites])
-    func deleteFavorite (fav : MyStoredFavorites)
+    
 }

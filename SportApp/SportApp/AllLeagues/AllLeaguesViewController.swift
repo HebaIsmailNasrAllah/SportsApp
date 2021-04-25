@@ -50,12 +50,7 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableCell
-    //        cell.leagueName.text = "Some League Name"
-    //        cell.leagueDetails.text = "1997"
-    //        cell.leagueImg.image = UIImage(named: "imgPlaceHolder")
-    //        cell.leagueImg.layer.cornerRadius = cell.leagueImg.frame.size.width/2
-    //
+    
             let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         cell.leagueName.text = leguesToDisplay[indexPath.row].strLeague!
         print(leguesToDisplay[indexPath.row].strLeague!)
@@ -63,7 +58,7 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
             cell.mainImg.image = UIImage(named: "imgPlaceHolder")
         let str = leguesToDisplay[indexPath.row].strBadge ?? "https://www.thesportsdb.com/images/sports/fighting.jpg"
         cell.mainImg!.sd_setImage(with: URL(string:str), placeholderImage: UIImage(named: "imgPlaceHolder"))
-//        cell.mainImg.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "imgPlaceHolder))
+
             cell.mainImg.layer.cornerRadius = cell.mainImg.frame.size.width/2
 
        //---------------------------
@@ -73,20 +68,7 @@ class AllLeaguesViewController: UIViewController ,UITableViewDelegate, UITableVi
            
         }
         
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            print("\nYou Clicked a row!")
-//            if NetworkMonitor.shared.isConnected {
-//                let vc = storyboard?.instantiateViewController(identifier: "leagueDetails") as? leagueDetailsViewController
-//                present(vc!, animated: true, completion: nil)
-//            }else{
-//                let alert : UIAlertController = UIAlertController(title: "Alert", message: "You Are Offline! Please Turn On The Internet", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-//                    print("ok")
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//
-//        }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("\nYou Clicked a row!")

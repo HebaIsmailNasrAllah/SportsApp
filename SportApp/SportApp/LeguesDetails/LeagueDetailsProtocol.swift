@@ -11,5 +11,5 @@ protocol LeagueDetailsProtocol : NSObjectProtocol {
     func setUpcomingEvents(allUpcomingEvents: [UpcomingEvents])
     func setLatestResults(allLatestResults: [Events])
     func setTeamsInLeague(allTeamsInLeague: [Teams])
-    //func setEssentialInfo(strCountry : String, strSport: String, teamId: String)
+    
 }

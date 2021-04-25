@@ -28,9 +28,8 @@ class FavoritePresenter {
     }
     
     func deleteFavorite(fav: MyStoredFavorites){
-       // StoredFavorites.deleteLeague(idOfLeague: fav.leagueID)
-        StoredFavorites.removeFromDB(id: fav.leagueID)
-        favoriteProtocol?.deleteFavorite(fav: fav)
+      StoredFavorites.deleteLeague(idOfLeague: fav.leagueID)
+        
     }
     
     

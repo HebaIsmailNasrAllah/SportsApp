@@ -51,13 +51,7 @@ class AllFavViewController: UIViewController , UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableCell
-//        cell.leagueName.text = "Some League Name"
-//        cell.leagueDetails.text = "1997"
-//        cell.leagueImg.image = UIImage(named: "imgPlaceHolder")
-//        cell.leagueImg.layer.cornerRadius = cell.leagueImg.frame.size.width/2
-//
+
         let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         cell.leagueName.text = favoritesToDisplay [indexPath.row].name
         cell.leagueDetail.text = ""
@@ -78,11 +72,11 @@ class AllFavViewController: UIViewController , UITableViewDataSource, UITableVie
     }
     
     @objc func displayNoLink(){
-                      let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
-                      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            let alert : UIAlertController = UIAlertController(title: "Alert", message: "Sorry! Link Not Found", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                           print("ok")
                       }))
-                      self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
       }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,12 +87,7 @@ class AllFavViewController: UIViewController , UITableViewDataSource, UITableVie
                     //collecting Data
                     var movingData = MyStoredFavorites()
                     movingData = favoritesToDisplay [indexPath.row]
-//                    movingData.name = leguesToDisplay[indexPath.row].strLeague ?? " "
-//                    movingData.leagueID =  leguesToDisplay[indexPath.row].idLeague ?? ""
-//                    movingData.country =  leguesToDisplay[indexPath.row].strCountry ?? ""
-//                    movingData.image =  leguesToDisplay[indexPath.row].strBadge ?? ""
-//                    movingData.sport =  leguesToDisplay[indexPath.row].strSport ?? ""
-//                    movingData.youTubeLink =  leguesToDisplay[indexPath.row].strYoutube ?? ""
+
                     print("Name : \(movingData.name) , leagueID: \(movingData.leagueID)")
                     //print()
                     //sendingData
@@ -115,48 +104,28 @@ class AllFavViewController: UIViewController , UITableViewDataSource, UITableVie
     }
     
     
-   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-          // Delete the row from the data source
-          tableView.deleteRows(at: [indexPath], with: .fade)
-        //favoritePresenter.deleteFavorite(fav: favoritesToDisplay[indexPath.row])
-        deleteFavorite(fav: favoritesToDisplay[indexPath.row])
-        favoritesToDisplay.remove(at: indexPath.row)
-        //favoritePresenter.getAllData()
-        //=========================
-        //Edition
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//
-//
-//        let fetch = NSFetchRequest<NSManagedObject>(entityName: "Favorites")
-//
-//                   do{
-//                    let favorites = try
-//                        managedContext.fetch(fetch)
-//                           print("fetch")
-//
-//                       for item in favorites {
-//                        if item.value(forKey: "leagueID") as! String? ==  favoritesToDisplay[indexPath.row].leagueID {
-//                           managedContext.delete(item)
-//                           }
-//
-//                       }
-//                      try  managedContext.save()
-//
-//                                  }catch {
-//                                    print("un fetch")
-//                                  }
-//
-//
-//
-//
+   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       UISwipeActionsConfiguration(actions: [UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, bool) in
+
+        self.showAlert(index: indexPath.row)
         
-        self.tableView.reloadData()
-      } else if editingStyle == .insert {
-          // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-      }
-  }
+       })])
+   }
+    func showAlert(index : Int) {
+        let alert : UIAlertController = UIAlertController(title: "Delete?", message: "Do you want to delete this legue", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            self.favoritePresenter.deleteFavorite(fav: self.favoritesToDisplay[index])
+             self.favoritesToDisplay.remove(at: index)
+                self.tableView.reloadData()
+            
+                print("ok")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            print("Cancel")
+        }))
+        
+      self.present(alert, animated: true, completion: nil)
+    }
 
 }
 
@@ -165,13 +134,6 @@ extension AllFavViewController : FavoriteProtocol {
         favoritesToDisplay = allfav
         self.tableView.reloadData()
     }
-    
-    func deleteFavorite(fav: MyStoredFavorites) {
-        favoritePresenter.deleteFavorite(fav: fav)
-        //self.tableView.reloadData()
-
-    }
-    
     
     
 }

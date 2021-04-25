@@ -26,10 +26,7 @@ UICollectionViewDelegateFlowLayout {
     let teamCellId = "TeamCollectionViewCell"
     let sportCellId = "SportCollectionViewCell"
     
-    //Coming From Previous Screen
-//    var strCountry = "spain"
-//    var leagueID = "4328"
-//    var sport = "soccer"
+    
     
     private let leagueDetailsPresenter = LeagueDetailsPresenter()
     var upComingEvents = [UpcomingEvents]()
@@ -48,8 +45,7 @@ UICollectionViewDelegateFlowLayout {
         collectionView3.delegate = self
         collectionView3.dataSource = self
         
-     //   let nibCell = UINib(nibName: leagueCellId, bundle: nil)
-     //   collectionView1.register(nibCell, forCellWithReuseIdentifier: leagueCellId)
+     
         
         let nibCell2 = UINib(nibName: resultCellId, bundle: nil)
         collectionView2.register(nibCell2, forCellWithReuseIdentifier: resultCellId)
@@ -60,8 +56,7 @@ UICollectionViewDelegateFlowLayout {
         let nibCell4 = UINib(nibName: sportCellId, bundle: nil)
         collectionView1.register(nibCell4, forCellWithReuseIdentifier: sportCellId)
         
-        //allLeguesPresenter.attachView(view: self)
-        //allLeguesPresenter.getAllLegues()
+        
         leagueDetailsPresenter.attachView(view : self)
         leagueDetailsPresenter.getAllLatestResults(leagueID: myStoredData.leagueID)
         leagueDetailsPresenter.getAllTeamsInLeague(strCountry: myStoredData.country , sport: myStoredData.sport)
@@ -94,9 +89,24 @@ UICollectionViewDelegateFlowLayout {
                 return upComingEvents.count
             }
         }else if (collectionView == collectionView2) {
-            return latestResults.count
+            if(latestResults.count != 0){
+                return latestResults.count
+            } else{
+                let event = Events()
+                latestResults.append(event)
+                latestResults.append(event)
+                return latestResults.count
+            }
         }else {
-            return allTeamsInLeague.count
+            if(allTeamsInLeague.count != 0){
+                return allTeamsInLeague.count
+            } else{
+                let team = Teams()
+                allTeamsInLeague.append(team)
+                allTeamsInLeague.append(team)
+                allTeamsInLeague.append(team)
+                return allTeamsInLeague.count
+            }
         }
     }
    
@@ -110,7 +120,6 @@ UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView3.frame.height, height: collectionView3.frame.height)
         }
     }
-    //Heba Will Start Rendering Each cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == collectionView1){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: sportCellId, for: indexPath) as! SportCollectionViewCell
@@ -124,14 +133,11 @@ UICollectionViewDelegateFlowLayout {
         }else if (collectionView == collectionView2) {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: resultCellId, for: indexPath) as! ResultCollectionViewCell
             
-//            cell.teamsName.text = (latestResults[indexPath.row].strHomeTeam ?? "") + "VS." + (latestResults[indexPath.row].strAwayTeam ?? "")
-//            cell.dateAndTime.text = "\(latestResults[indexPath.row].dateEvent ?? "") &  \(latestResults[indexPath.row].strTime ?? "")"
-//            cell.teamsResult.text = "\(latestResults[indexPath.row].intHomeScore ?? "") : \(latestResults[indexPath.row].intAwayScore ?? "")"
             cell.teamsHome.text = latestResults[indexPath.row].strHomeTeam ?? ""
             cell.teamAway.text =
                 latestResults[indexPath.row].strAwayTeam ?? ""
             cell.dateAndTime.text =
-                latestResults[indexPath.row].dateEvent ?? ""
+                latestResults[indexPath.row].dateEvent ?? "no match avaliable"
             cell.teamsResult.text =
             " \(latestResults[indexPath.row].intHomeScore ?? "")  VS.   \(latestResults[indexPath.row].intAwayScore ?? "")"
             cell.teamHomeImg.image = UIImage(named: "team")

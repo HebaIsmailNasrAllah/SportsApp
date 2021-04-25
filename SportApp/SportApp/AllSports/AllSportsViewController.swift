@@ -48,13 +48,13 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
            
-               return CGSize(width: (collectionView1.frame.width/2)-6, height: collectionView1.frame.height/4)
+               return CGSize(width: (collectionView1.frame.width/2)-5, height: collectionView1.frame.height/4)
        }
        
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: leagueCellId, for: indexPath) as! LeagueCollectionViewCell
-//           cell.mainImg.image = UIImage(named: "imgPlaceHolder")
+
         let str = sportsToDisplay[indexPath.row].strSportThumb!
         cell.mainImg!.sd_setImage(with: URL(string:str), placeholderImage: UIImage(named: "imgPlaceHolder"))
         cell.mainlbl.text = sportsToDisplay[indexPath.row].strSport!
